@@ -70,6 +70,48 @@ animation-nameとかわざわざ書かないで済む
 
     backgroud-image: url("/image#{$i}.png");
 
+## @import
+ほかのファイルを読み込む
+
+    /*_mixin.scssとした場合
+    (アンダーバーに注意)*/
+
+    @import mixin;
+
+
+## @each
+連想配列風にした変数を取り出せる
+
+    $pattern: (
+    "up": translateY(6px),
+    "down": translateY(-6px),
+    "left": translateX(40px),
+    "right": translateX(-40px),
+    );
+
+    @each $key,$value in $pattern {
+        //keyが左、valueが内容
+        .appear.#{$key}{
+            & .item{
+                transform: $value;
+            }
+        }
+    }
+
+## @extend
+
+    .aaa{
+        background-color: black;
+        color: white:
+        font-size: 2vh;
+    }
+
+    .bbb{
+        border: 1px solid black;
+        @extend .aaa;
+        //これによって.aaaに書かれている内容を.bbbに読み込める
+    }
+
 ## セレクタ(この辺はCSSだけど)
 
     & > .aaa{
