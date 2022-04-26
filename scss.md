@@ -78,6 +78,25 @@ animation-nameとかわざわざ書かないで済む
 
     @import mixin;
 
+    //生のCSSの読み込みはurl()を使う
+    @import url("desktop.css") screen and (min-width: 601px);
+
+    //これは「「「「できない」」」」ので注意！！
+    //@import "desctop" screen and (min-width: 601px);
+
+    //SCSSから読みたい場合こうする
+    @media screen and(min-width: 601px) {
+       // @import "desktop.scss";
+    }
+
+    /*この書き方がおすすめ
+    desktopの方が書かないといけないスタイルが多いのでモバイルベースでやった方がいい*/
+    //@import "mobile.scss";
+
+    @media screen and (min-width: 601px) {
+       // @import "desktop.scss";
+    }
+
 
 ## @each
 連想配列風にした変数を取り出せる
